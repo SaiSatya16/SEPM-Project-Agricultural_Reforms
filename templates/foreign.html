@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static\style_frncrp.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5f59ca6ad3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h2 class="logo">Agriculture Reforms</h2>
+        <div class="header d-flex flex-row justify-content-center" id="home">
+          <div class="d-flex flex-row justify-content-end">
+            <ul class="ml-auto">
+              <li><a href="/">Home</a></li>
+              <li><a href="/#follow">Contact Us</a></li>
+              <li><a href="/#about">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="row p-5">
+      <div class="col-12 col-md-6">
+        <h1 class="rec-head">Foreign Crop Information System:</h1>
+        <p class="crop-prediction-para">
+          The foreign crop recommendation feature for Indian farmers is a
+          cutting-edge tool that leverages a vast repository of data and expert
+          knowledge to provide information about the best foreign crops that are
+          most suited for cultivation in Indian conditions. The feature is
+          designed to be user-friendly, with an intuitive interface that enables
+          farmers to quickly and easily access information on recommended crops,
+          as well as detailed guidance on cultivation techniques and best
+          practices. With its advanced capabilities and comprehensive range of
+          features including initial investment needed and soil and water
+          requirements, the foreign crop recommendation software is an
+          invaluable tool for Indian farmers looking to diversify their crops
+          and optimize their yields.
+        </p>
+      </div>
+      <div class="col-12 col-md-6">
+        <form class="form-inline" method="POST" action="{{ url_for('test') }}">
+          <div class="form-group">
+            <div class="input-group d-flex flex-row justify-content-center">
+              <h3 class="input-group-addon mr-3">Please select Crops:</h3>
+              <select name="comp_select" class="selectpicker form-control">
+                {% for o in data %}
+                <option value="{{ o.name }}">{{ o.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="d-flex flex-column justify-content-center ml-3">
+            <div class="d-flex flex-row justify-content-center">
+              <button type="submit" class="button-predict">Go</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <!--From https://codepen.io/frytyler/pen/EGdtg-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>crop recommendation</title>
+    <meta charset="utf8" />
+    <meta http-equiv="X-UA-Compatible" content="IE = edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static\style_rec.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5f59ca6ad3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header>
+    <nav>
+      <h2 class="logo">Agriculture Reforms</h2>
+      <div class="header d-flex flex-row justify-content-center" id="home">
+      <div class="d-flex flex-row justify-content-end">
+      <ul class="ml-auto">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#follow">Contact Us</a></li>
+        <li><a href="/#about">About</a></li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+  </header>
+    <div class="login p-5">
+      <!-- Main Input For Receiving Query to our ML -->
+
+      <div class="row">
+        <div class="col-12 col-md-6 p-4">
+          <h1 class="rec-head">Crop Recommendations:</h1>
+          <p class="crop-prediction-para mb-5">
+            The precise recommendation of crops is a pivotal constituent of
+            Precision Agriculture, and can be accomplished by means of a
+            sophisticated machine learning-based approach. In the realm of
+            agriculture, it is of paramount importance that the recommendations
+            provided are characterized by a high degree of accuracy and
+            precision.
+          </p>
+            <p class="crop-prediction-para mb-5"> This is due to the fact that any erroneous
+            recommendations can lead to substantial material and capital losses,
+            which can severely impact the economic viability of agricultural
+            endeavors.This recommendation will help the farmers in India to make
+            learned decisions about the selection crops.The application provides
+            recommendations to farmers to determine the appropriate crop which
+            can be used to increase crop yield.
+          </p>
+          <h1 class="rec-head">How does it work?</h1>
+          <p class="crop-prediction-para">
+             The system employs a K-Nearest Neighbors (KNN)
+            supervised learning model, which methodically analyzes a diverse
+            range of data inputs, such as soil type, weather patterns, pH level,
+            and additional environmental factors. Ultimately, this systematic
+            and automated process yields a set of personalized recommendations
+            that identify the most optimal crops to cultivate in a given area.
+          </p>
+          <p class="crop-prediction-para text-info text-left"  >If you don't know the details of parameters,click below Link:</p>
+          <a class="info-sty bg-info" href="https://farmer.gov.in/STL.aspx">Farmer's Portal</a>
+        </div>
+        <div class="col-12 col-md-6 p-4">
+          <form action="{{ url_for('predict')}}" method="post">
+            <div class="inp-sty mb-3">
+              <label for="nitro" class="label-sty">Enter Nitrogen(N) Percentage</label>
+              <input
+                id="nitro"
+                type="number"
+                name="N"
+                placeholder="N"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="phos" class="label-sty">Enter Phosporous(P) Percentage</label>
+              <input id="phos" type="number" name="P" placeholder="P" required="required" />
+            </div>
+            <div class="inp-sty  mb-3">
+              <label for="potas" class="label-sty">Enter Potassium(K) Percentage</label>
+              <input id="potas" type="number" name="K" placeholder="K" required="required" />
+            </div>
+            <div class="inp-sty  mb-3">
+              <label for="temp" class="label-sty">Enter Temperature (°C)</label>
+              <input
+              id="temp"
+                type="number"
+                name="Temperature"
+                placeholder="temp"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty  mb-3">
+              <label for="humi" class="label-sty">Enter Humidity</label>
+              <input
+              id="humi"
+                type="number"
+                name="humidity"
+                placeholder="humidity"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty  mb-3">
+              <label for="ph" class="label-sty">Enter pH of Soil</label>
+              <input
+              id="ph"
+                type="number"
+                name="ph"
+                placeholder="ph"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty  mb-3">
+              <label for="rainfall" class="label-sty">Enter Rainfall(mm)</label>
+              <input
+                type="number"
+                id="rainfall"
+                name="rainfall"
+                placeholder="rainfall"
+                required="required"
+              />
+            </div>
+            <div class="text-center">
+              <button type="submit" class="button-predict">Predict</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      
+      
+      <div class="card d-flex flex-row justify-content-center shadow p-3">
+      
+      <p class="result-text text-center">Crop Suitable to given Data: <strong>{{ prediction_text }}</strong></p>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>

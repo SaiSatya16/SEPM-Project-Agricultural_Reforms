@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <!--From https://codepen.io/frytyler/pen/EGdtg-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>fertilizer recommendation</title>
+    <meta charset="utf8" />
+    <meta http-equiv="X-UA-Compatible" content="IE = edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static\style_fer.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5f59ca6ad3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <h2 class="logo">Agriculture Reforms</h2>
+        <div class="header d-flex flex-row justify-content-center" id="home">
+          <div class="d-flex flex-row justify-content-end">
+            <ul class="ml-auto">
+              <li><a href="/">Home</a></li>
+              <li><a href="/#follow">Contact Us</a></li>
+              <li><a href="/#about">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="login p-3">
+      <!-- Main Input For Receiving Query to our ML -->
+
+      <div class="row">
+        <div class="col-12 col-md-6 mt-5">
+          <h1 class="rec-head"><strong>Fertilizer Recommondation</strong></h1>
+          <p class="crop-prediction-para">
+            A fertilizer recommendation system based on machine learning
+            utilizes algorithms to predict the optimal fertilizer application
+            rate for a specific crop based on various inputs such as soil type,
+            weather data, crop type, and other relevant data. The system uses
+            historical data on crop yield and fertilizer application rates to
+            train the machine learning model, which can then generate
+            recommendations based on the specific inputs provided by the user.
+          </p>
+          <p class="crop-prediction-para">
+            <strong class="rec-head"
+              >Below are the crop names and their corresponding key
+              values:</strong
+            ><br />
+
+            Barley: 0<br />
+            Cotton: 1<br />
+            Ground Nuts: 2<br />
+            Maize: 3<br />
+            Millets: 4<br />
+            Oil seeds: 5<br />
+            Paddy: 6<br />
+            Pulses: 7<br />
+            Sugarcane: 8<br />
+            Tobacco: 9<br />
+            Wheat: 10<br />
+          </p>
+          <p class="crop-prediction-para">
+            <strong class="rec-head"
+              >And here are the soil types and their corresponding key
+              values:</strong
+            ><br />
+
+            Black: 0<br />
+            Clayey: 1<br />
+            Loamy: 2<br />
+            Red: 3<br />
+            Sandy: 4<br />
+          </p>
+          <p class="crop-prediction-para">
+            Please enter the corresponding values for your crop to receive a
+            customized fertilizer recommendation.
+          </p>
+
+          <p class="crop-prediction-para">
+            find the recommendad fertilizer for your crop based on your soil
+            condition
+          </p>
+          <p class="crop-prediction-para text-info text-left">
+            If you don't know the details of parameters,click here:
+          </p>
+          <a class="info-sty bg-info" href="https://farmer.gov.in/STL.aspx"
+            >Farmer's Portal</a
+          >
+        </div>
+        <div class="col-12 col-md-6 mt-5">
+          <form action="{{ url_for('fert_rec')}}" method="post">
+            <div class="inp-sty mb-3">
+              <label for="temp" class="label-sty">Enter Temperature</label>
+              <input
+                id="temp"
+                type="number"
+                name="Temp"
+                placeholder="Temperature"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="humi" class="label-sty">Enter Humidity</label>
+              <input
+                id="humi"
+                type="number"
+                name="Humidity"
+                placeholder="Humidity"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="mois" class="label-sty">Enter Moisture</label>
+              <input
+                id="mois"
+                type="number"
+                name="Moisture"
+                placeholder="Moisture"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="soil" class="label-sty">Enter Soil Type</label>
+              <input
+                id="soil"
+                type="number"
+                name="Soil Type"
+                placeholder="soil code"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="crop" class="label-sty">Crop Details</label>
+              <input
+                id="crop"
+                type="text"
+                name="crop Type"
+                placeholder="crop"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="nitro" class="label-sty">Enter Nitrogen(N) %</label>
+              <input
+                id="nitro"
+                type="number"
+                name="N"
+                placeholder="N"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="potas" class="label-sty">Enter Potassium(K) %</label>
+              <input
+                id="potas"
+                type="number"
+                name="K"
+                placeholder="K"
+                required="required"
+              />
+            </div>
+            <div class="inp-sty mb-3">
+              <label for="phos" class="label-sty">Enter Phosporous(P) %</label>
+              <input
+                id="phos"
+                type="number"
+                name="P"
+                placeholder="P"
+                required="required"
+              />
+            </div>
+            <div class="text-center">
+              <button type="submit" class="button-predict">
+                Find Recommonded Fertilizer
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <br />
+      <div class="d-flex flex-row justify-content-center p-3">
+        <div class="card shadow p-3">
+          <h1 class="result-text text-center">
+            Recommended Fertilizer Based on your Data is:
+            <strong class="text-bold">{{ prediction_text }}</strong>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
