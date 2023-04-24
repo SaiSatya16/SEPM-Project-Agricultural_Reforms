@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
 .main-container {
   /* background-image: url("https://indiaforensic.com/certifications/wp-content/uploads/2017/01/agriculture-768x432.jpg"); */
-  background-image: url("bgimg2.jpg");
+  background-image: url("background.png");
   height: 100vh;
   background-size: cover;
 }
@@ -17,7 +17,7 @@ body {
   width: 250px;
   border-color: #fff;
   border-radius: 20px;
-  background-color: #24eb0a;
+  background-color: #1ba908;
   border-radius: 10px;
   border-width: 0px;
   font-size: 20px;
